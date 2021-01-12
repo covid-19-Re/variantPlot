@@ -41,9 +41,9 @@ generate_plot <- function(output_dir) {
   ci <- binom::binom.confint(data$k, data$n, methods = "wilson")
   data <- data %>%
     mutate(
-      p = round(ci$mean, digits = 4),
-      p_lower = round(ci$lower, digits = 4),
-      p_upper = round(ci$upper, digits = 4),
+      p = round(ci$mean, digits = 4) * 100,
+      p_lower = round(ci$lower, digits = 4) * 100,
+      p_upper = round(ci$upper, digits = 4) * 100,
       year_week = paste0(year, "-", week)
     )
 
@@ -61,7 +61,8 @@ generate_plot <- function(output_dir) {
         title = "Calendar Week"
       ),
       yaxis = list(
-        title = "Relative Frequency"
+        title = "Estimated Percentage of New Variant",
+        ticksuffix = "%"
       ),
       showlegend = TRUE,
       legend = list(
