@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SARS-CoV-2 Variants of Concern in Switzerland</title>
+    <style>
+        body {
+            max-width: 800px;
+            font-family: "Nunito Sans", sans-serif;
+            font-weight: 400;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>SARS-CoV-2 Variants of Concern in Switzerland</h1>
+<p>
+    Different labs across Switzerland perform a genetic characterization of randomly chosen SARS-CoV-2 samples. All
+    these samples stem from swabs of infected people. The goal is to estimate the frequency of the new variants B.1.1.7
+    (described first in the UK) and 501Y.V2 (described first in South Africa). In each week, the labs report to us the
+    number of considered random samples and the number of identified B.1.1.7 strains and the number of 501Y.V2 strains.
+    We then employ a binomial distribution and Wilson uncertainty intervals in order to estimate the frequency of the
+    variants. Given the delay between infection and swab collection, the frequency estimates for a particular week
+    reflect the epidemic situation around 1-2 weeks earlier. The data is available on Github:
+    <a href="https://github.com/covid-19-Re/variantPlot/blob/master/data/data.csv">
+        https://github.com/covid-19-Re/variantPlot/blob/master/data/data.csv</a>
+</p>
+
+<iframe
+        src="https://ibz-shiny.ethz.ch/covidDashboard/variant-plot/variantPlot_b117.html"
+        height="500px"
+        width="100%"
+        style="outline: none; border: none;"
+></iframe>
+
+<iframe
+        src="https://ibz-shiny.ethz.ch/covidDashboard/variant-plot/variantPlot_s501yv2.html"
+        height="500px"
+        width="100%"
+        style="outline: none; border: none;"
+></iframe>
+
+<h2>Acknowledgements:</h2>
+
+<p>
+    <b>Viollier:</b> Samples are provided by <a href="https://www.viollier.ch/">Viollier AG</a>. Whole genome sequenicing is performed
+    through the <a href="https://bsse.ethz.ch/cevo/research/sars-cov-2/swiss-sequencing-consortium---viollier.html">
+    Swiss Viollier Sequencing Consortium</a> lead by ETH Zürich.
+</p>
+<p>
+    <b>Risch:</b> Samples are provided and screened by <a href="https://www.risch.ch/">Labor Risch</a>. Whole genome sequencing is
+    performed by the <a href="https://www.unispital-basel.ch/ueber-uns/bereiche/medizin/kliniken-institute-abteilungen/infektiologie-spitalhygiene/ueber-uns/abteilungen/applied-microbiology-research-laboratory/">
+    University Hospital Basel (Clinical Mircobiology)</a>
+    and the University Hospitals of Geneva
+    (<a href="https://www.unige.ch/medecine/demed/en/groupes-de-recherche/isabella-eckerle/">Group Eckerle</a> and
+    <a href="https://www.unige.ch/medecine/demed/fr/groupes-de-recherche/668kaiser/">Group Kaiser</a>).
+</p>
+</body>
+</html>
