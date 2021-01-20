@@ -86,6 +86,8 @@ generate_plot <- function(output_dir) {
                           title = "B.1.1.7 Variant in Switzerland", libdir = paste0(output_dir, "/lib_b117"))
   htmlwidgets::saveWidget(fig_s501yv2, paste0(output_dir, "/variantPlot_s501yv2.html"), selfcontained = FALSE,
                           title = "S.501Y.V2 Variant in Switzerland", libdir = paste0(output_dir, "/lib_s501yv2"))
+  # save data for Lagebericht
+  write_csv(data, paste0(output_dir, "/variantPlot_data.csv"))
 }
 
 
