@@ -1,3 +1,5 @@
 # Editors
 .idea/
 *.iml
+
+config.yml

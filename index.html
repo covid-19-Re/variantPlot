@@ -11,6 +11,11 @@
             margin-left: auto;
             margin-right: auto;
         }
+        .source_info {
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: small;
+        }
     </style>
 </head>
 <body>
@@ -27,19 +32,40 @@
     <a href="https://github.com/covid-19-Re/variantPlot/blob/master/data/data.csv">Github</a>.
 </p>
 
+<p><b>Important: the most recent estimates may be based on incomplete data and may thus be corrected later.</b></p>
+
 <iframe
-        src="https://ibz-shiny.ethz.ch/covidDashboard/variant-plot/variantPlot_b117.html"
+        src="https://ibz-shiny.ethz.ch/covidDashboard/variant-plot/variantPlot_b117_internal.html"
         height="500px"
         width="100%"
         style="outline: none; border: none;"
 ></iframe>
 
 <iframe
-        src="https://ibz-shiny.ethz.ch/covidDashboard/variant-plot/variantPlot_s501yv2.html"
+        src="https://ibz-shiny.ethz.ch/covidDashboard/variant-plot/variantPlot_s501yv2_internal.html"
         height="500px"
         width="100%"
         style="outline: none; border: none;"
 ></iframe>
+
+
+<h2>International Comparison</h2>
+
+<iframe
+        src="https://ibz-shiny.ethz.ch/covidDashboard/variant-plot/variantPlot_b117_international.html"
+        height="500px"
+        width="100%"
+        style="outline: none; border: none;"
+></iframe>
+
+<div class="source_info">
+    Sources: Denmark: <a href="https://www.covid19genomics.dk/statistics">Danish Covid-19 Genome Consortium</a>;
+    UK: <a href="https://www.gisaid.org/">GISAID</a>;
+    UK S-dropout: <a href="https://www.gov.uk/government/publications/investigation-of-novel-sars-cov-2-variant-variant-of-concern-20201201">
+        Technical briefings of Public Health England</a>;
+    Switzerland: See acknowledgements belov
+</div>
+
 
 <h2>Acknowledgements:</h2>
 
@@ -49,8 +75,8 @@
     Swiss Viollier Sequencing Consortium</a> lead by ETH Zürich.
 </p>
 <p>
-    <b>Risch:</b> Samples are provided and screened by <a href="https://www.risch.ch/">Labor Risch</a>. Whole genome sequencing is
-    performed by the <a href="https://www.unispital-basel.ch/ueber-uns/bereiche/medizin/kliniken-institute-abteilungen/infektiologie-spitalhygiene/ueber-uns/abteilungen/applied-microbiology-research-laboratory/">
+    <b>Risch:</b> Samples are provided and screened by <a href="https://www.risch.ch/">Labor Risch</a>. Genomic characterization is
+    performed by Labor Risch, the <a href="https://www.unispital-basel.ch/ueber-uns/bereiche/medizin/kliniken-institute-abteilungen/infektiologie-spitalhygiene/ueber-uns/abteilungen/applied-microbiology-research-laboratory/">
     University Hospital Basel (Clinical Mircobiology)</a>
     and the University Hospitals of Geneva
     (<a href="https://www.unige.ch/medecine/demed/en/groupes-de-recherche/isabella-eckerle/">Group Eckerle</a> and
