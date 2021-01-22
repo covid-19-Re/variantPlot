@@ -160,7 +160,7 @@ generate_switzerland_plot <- function(output_dir, internal = FALSE) {
       config(
         displaylogo = FALSE,
         modeBarButtons = list(list("zoom2d", "toImage", "resetScale2d", "pan2d")),
-        toImageButtonOptions = list(format = "png", width = 1600, height = 800, scale = 1)
+        toImageButtonOptions = list(format = "svg", width = 1600, height = 800, filename = plot_title)
       )
     return(fig)
   }
@@ -248,7 +248,9 @@ generate_comparison_plot <- function(output_dir, logscale = FALSE) {
       xaxis = list(
         title = "",
         type = "date",
-        tickformat = "Week %U<br>%Y",
+        # Nice! Just in time. %V became possible only a few months ago!
+        # https://github.com/plotly/plotly.js/issues/3052#issuecomment-688834265
+        tickformat = "Week %V<br>%Y",
         range = c(min_date - 7, max_date + 7)
       ),
       yaxis = list(
@@ -264,7 +266,7 @@ generate_comparison_plot <- function(output_dir, logscale = FALSE) {
     config(
       displaylogo = FALSE,
       modeBarButtons = list(list("zoom2d", "toImage", "resetScale2d", "pan2d")),
-      toImageButtonOptions = list(format = "png", width = 1600, height = 800, scale = 1)
+      toImageButtonOptions = list(format = "svg", width = 1600, height = 800, filename = "variantPlot_b117_international")
     )
 
   # Save to file
