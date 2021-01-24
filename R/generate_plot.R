@@ -82,6 +82,9 @@ generate_switzerland_plot <- function(output_dir, internal = FALSE) {
 
 
   gen <- function(variant_name, plot_title) {
+    # Ignore the data from the most recent week
+    data <- data %>% filter(year_week != max(data$year_week))
+
     fig <- plot_ly() %>%
       add_trace(
         data = data %>% filter(variant == variant_name), type = "box", x = ~year_week, color = ~lab,
@@ -93,7 +96,9 @@ generate_switzerland_plot <- function(output_dir, internal = FALSE) {
       )
 
     if (internal) {
-      data_case_numbers <- data_case_numbers %>% filter(variant == variant_name)
+      data_case_numbers <- data_case_numbers %>%
+        filter(variant == variant_name) %>%
+        filter(year_week != max(year_week)) # Ignore the data from the current week
       fig <- fig %>%
         add_trace(
           data = data_case_numbers, type = "scatter", mode = "lines",
@@ -132,29 +137,46 @@ generate_switzerland_plot <- function(output_dir, internal = FALSE) {
       yaxis2 <- list(
         overlaying = "y",
         side = "right",
-        title = "Estimated Case Number of New Variant",
-        range = c(0, max(data_case_numbers$cases_upper))
+        title = list(
+          text = "Estimated Case Number of New Variant",
+          standoff = 30
+        ),
+        range = c(0, max(data_case_numbers$cases_upper)),
+        automargin = TRUE
       )
     }
 
     fig <- fig %>%
       layout(
+        margin = list (t = 100, b = 100),
         title = plot_title,
+        font = list (
+          size = 16
+        ),
         boxmode = "group",
         xaxis = list(
-          title = "Calendar Week"
+          title = list(
+            text = "Calendar Week",
+            standoff = 5
+          ),
+          automargin = TRUE
         ),
         yaxis = list(
-          title = "Estimated Percentage of New Variant",
+          title = list(
+            text = "Estimated Percentage of New Variant",
+            standoff = 30
+          ),
           ticksuffix = "%",
-          range = c(0, max(data$p_upper))
+          range = c(0, max(data$p_upper)),
+          automargin = TRUE
         ),
         yaxis2 = yaxis2,
         showlegend = TRUE,
         legend = list(
           title = list(
             text = "<b>Diagnostic Lab</b>"
-          )
+          ),
+          orientation = "h"
         )
       ) %>%
       config(
@@ -222,6 +244,14 @@ generate_comparison_plot <- function(output_dir, logscale = FALSE) {
                     "%-", round(p_upper, digits = 2), "%)")
     )
 
+  # Ignore most recent data point for UK
+  data <- data %>%
+    filter(country != "UK" | date != max((data %>% filter(country == "UK"))$date))
+  if (logscale) {
+    data <- data %>% # To avoid zero of week 47
+      filter(!(country == "Denmark" & year == 2020 & week < 48))
+  }
+
   min_date <- min(data$date)
   max_date <- max(data$date)
 
@@ -245,6 +275,10 @@ generate_comparison_plot <- function(output_dir, logscale = FALSE) {
     ) %>%
     layout(
       title = "B.1.1.7 Variant - International Comparison",
+      margin = list (t = 100, b = 100),
+      font = list (
+        size = 16
+      ),
       xaxis = list(
         title = "",
         type = "date",
